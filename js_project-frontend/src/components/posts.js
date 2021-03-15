@@ -19,7 +19,9 @@ class Posts {
     e.preventDefault();
     const value = this.newPostBody.value;
 
-    this.adapter.createPost(value);
+    this.adapter.createPost(value).then(post => {
+
+    });
   }
 
   fetchAndLoadPosts() {
