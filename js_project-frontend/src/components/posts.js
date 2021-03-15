@@ -9,12 +9,17 @@ class Posts {
   // cached DOM elements go here:
   initBindEventListeners() {
     this.postsContainer = document.getElementById('posts-container');
+    this.newPostBody = document.getElementById('new-post-body')
     this.postsForm = document.getElementById('new-post-form');
-    this.postsForm.addEventListener('submit', this.createPost)
+    this.postsForm.addEventListener('submit', this.createPost.bind(this)); // anytime form is submitted bind this to Posts class
   }
 
-  createPost() {
-    console.log('working');
+  // prevent the default form submit behavior which is to refresh the page
+  createPost(e) {
+    e.preventDefault();
+    const value = this.newPostBody.value;
+
+    this.adapter.createPost(value);
   }
 
   fetchAndLoadPosts() {
