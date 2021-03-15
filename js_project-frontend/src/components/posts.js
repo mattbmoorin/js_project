@@ -2,8 +2,19 @@ class Posts {
   constructor() {
     this.posts = [];
     this.adapter = new PostsAdapter();
-    // this.bindEventListeners();
+    this.initBindEventListeners();
     this.fetchAndLoadPosts();
+  }
+
+  // cached DOM elements go here:
+  initBindEventListeners() {
+    this.postsContainer = document.getElementById('posts-container');
+    this.postsForm = document.getElementById('new-post-form');
+    this.postsForm.addEventListener('submit', this.createPost)
+  }
+
+  createPost() {
+    console.log('working');
   }
 
   fetchAndLoadPosts() {
@@ -18,7 +29,6 @@ class Posts {
   }
 
   render() {
-    const postsContainer = document.getElementById('posts-container');
-    postsContainer.innerHTML = this.posts.map(post => `<li>${post.body}</li>`).join('');
+    this.postsContainer.innerHTML = this.posts.map(post => post.renderLi()).join('');
   }
 }
