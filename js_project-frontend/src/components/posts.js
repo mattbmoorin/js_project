@@ -10,7 +10,7 @@ class Posts {
     this.adapter
       .getPosts()
       .then((posts) => {
-        posts.forEach((post) => this.posts.push(post));
+        posts.forEach((post) => this.posts.push(new Post(post)));
       })
       .then(() => {
         this.render();
@@ -19,6 +19,6 @@ class Posts {
 
   render() {
     const postsContainer = document.getElementById('posts-container');
-    postsContainer.innerHTML = this.posts.forEach((post) => post.body);
+    postsContainer.innerHTML = this.posts.map(post => `<li>${post.body}</li>`).join('');
   }
 }
