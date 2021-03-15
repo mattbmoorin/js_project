@@ -20,7 +20,9 @@ class Posts {
     const value = this.newPostBody.value;
 
     this.adapter.createPost(value).then(post => {
-
+      this.posts.push(new Post(post)); // passed back from the server and pushed into dom via new instance of post
+      this.newPostBody.value = '';
+      this.render();
     });
   }
 
