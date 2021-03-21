@@ -7,6 +7,6 @@ class Post {
 
   // render li for post object
   renderLi() {
-    return `<li>${this.body}</li>`;
+    return `<div class = 'post-get-comment' id = "${this.id}"><div>${this.body}</div></div>`;
   }
 }

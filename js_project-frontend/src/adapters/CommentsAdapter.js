@@ -1,8 +1,9 @@
 class CommentsAdapter {
+  // set api endpoint
   constructor() {
     this.baseUrl = 'http://localhost:3000/api/v1/comments';
   }
-
+  // grab from api endpoint
   getComments() {
     return fetch(this.baseUrl).then((res) => res.json());
   }
